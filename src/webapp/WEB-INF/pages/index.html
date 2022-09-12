@@ -4,12 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        .brd {
+            border: 4px solid black;
+            display: table;
+        }
+    </style>
 </head>
 <body>
 <div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+    <div class="brd">
+        <div>Create User</div>
+        <form th:method="post" th:action="@{/post}" th:object="${user}">
+            <label for="name_post">Name: </label>
+            <input id="name_post" th:field="*{name}" type="text"/>
+            <br/>
+            <label for="lastName_post">Last name: </label>
+            <input type="text" th:field="*{lastName}"  id="lastName_post"/>
+            <br/>
+            <input type="submit" value="create">
+        </form>
+    </div>
+    <br/>
+    <div class="brd">
+        <div>Update User</div>
+        <form th:method="post" th:action="@{/update}" th:object="${user}">
+            <label for="id_update">Id: </label>
+            <input id="id_update" th:field="*{id}" type="text"/>
+            <br/>
+            <label for="name_update">Name:</label>
+            <input id="name_update" th:field="*{name}" type="text"/>
+            <br/>
+            <label for="lastName_update">Last name:</label>
+            <input type="text" th:field="*{lastName}"  id="lastName_update"/>
+            <br/>
+            <input type="submit" value="unpate">
+        </form>
+    </div>
+    <br/>
+    <div class="brd">
+        <div>Delete User</div>
+        <form th:method="DELETE" th:action="@{/delete}" >
+            <label for="id_patch">Id:</label>
+            <input id="id_patch"  type="text" name="id_patch"/>
+            <br/>
+            <input type="submit" value="delete">
+        </form>
+    </div>
+    <br/>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Last Name</th>
+        </tr>
+        <th:block th:each="msg : ${messages}">
+            <tr>
+                <td th:text="${msg.getId()}"></td>
+                <td th:text="${msg.getName()}"></td>
+                <td th:text="${msg.getLastName()}"></td>
+            </tr>
+        </th:block>
+    </table>
 </div>
 </body>
 </html>
