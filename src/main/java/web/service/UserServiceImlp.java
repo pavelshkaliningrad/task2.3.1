@@ -10,12 +10,10 @@ import java.util.List;
 public class UserServiceImlp implements UserService {
     @Autowired
     UserDao userDao;
-    @Transactional
     @Override
     public List<User> getList() {
         return userDao.getAll();
     }
-    @Transactional
     @Override
     public User getById(int id) {
         return userDao.getById(id);

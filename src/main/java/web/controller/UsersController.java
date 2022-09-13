@@ -22,10 +22,6 @@ public class UsersController {
     UserService userService;
     @GetMapping("/")
     public String getAllUsers(Model model) {
-        userService.createTable();
-        //userService.getList();
-        //userService.add(new User("name1","lastname1"));
-        //User rrr = userService.getById(2);
         model.addAttribute("messages", userService.getList());
         model.addAttribute("user", new User());
         return  "index";

@@ -23,7 +23,6 @@ public class EntityManagerUserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
-        this.createTable();
         entityManager.persist(user);
     }
 
